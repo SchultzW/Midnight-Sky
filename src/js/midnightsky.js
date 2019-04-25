@@ -1,6 +1,11 @@
 import './general.js';
 
-/* Create a class called MidnightSky
+class MidnightSky
+{
+    constructor()
+    {
+        /*
+         Create a class called MidnightSky
 - Part 1 - Create and draw stationary stars
     - Initialize instance variables for all of the ui elements in the constructor
         -   this.$canvas = 
@@ -30,22 +35,93 @@ import './general.js';
             stars: []
         };
         this.config = JSON.parse(JSON.stringify(this.defaults));
-    - Write the method setCanvas
+        */
+        this.$canvas=document.getElementById('imgCanvas');
+        this.$context=this.$canvas.getContext('2d');
+        this.animationFrame;
+        this.defaults=
+        {
+            star:
+            {
+                color: 'rgba(255, 255, 255, .5)',
+                width: 3,
+                randomWidth: true
+            },
+            line: 
+            {
+                color: 'rgba(255, 255, 255, .5)',
+                width: 0.2
+            },
+            position: 
+            {
+                x: 0,
+                y: 0
+            },
+            width: window.innerWidth,
+            height: window.innerHeight,
+            velocity: 0.1,
+            length: 100,
+            distance: 120,
+            radius: 150,
+            stars: []
+        };
+        this.config = JSON.parse(JSON.stringify(this.defaults));
+        this.createCanvas=this.createCanvas.bind(this);
+        createCanvas();
+        this.setContext=this.setContext.bind(this);
+        setContext();
+        this.setInitialPosition=this.setInitialPosition.bind(this);
+        setInitialPosition();
+
+    }
+    createCanvas()
+    {
+        this.$canvas.width=Math.min(config.width);
+        this.$canvas.height=Math.min(config.height);
+        
+        /*
+         Write the method setCanvas
         -   set the width and the height of the canvas to the 
             width and the height in the config object
         -   bind the class to the method in the constructor
         -   call the method in the constructor
-    - Write the method setContext
+        */
+    }
+    setContext()
+    {
+        /*
+        - Write the method setContext
         -   set the strokeStyle, fileStyle and lineWidth properties of the context
             based on corresponding values in the config object
         -   bind the class to the method in the constructor
         -   call the method in the constructor
-    - Write the method setInitialPosition
+        */
+       this.$context.strokeStyle=this.config.strokeStyle;
+       this.$context.fileStyle=this.config.fileStyle;
+       this.$context.lineWidth=this.config.lineWidth;
+    }
+    setInitialPosition()
+    {
+        this.config.x=this.$canvas.width/2;
+        this.config.y=this.$canvas.height/2;
+        /*
+        - Write the method setInitialPosition
         -   set the x and y position in the config object to 
             half of the canvas width and height respectively
         -   bind the class to the method in the constructor
         -   call the method in the constructor
-    - Write the method createStar
+        */
+    }
+    createStar()
+    {   
+        let myStar=defaults;
+        myStar.x=Math.floor(Math.random() * this.$canvas.width);
+        myStar.y=Math.floor(Math.random() * this.$canvas.height);
+        //myStar.xv=
+        //myStar.vy=
+        myStar.radius=Math.floor(Math.random() * 200) + 100;
+        /*
+        - Write the method createStar
         -   make a copy of the default star characteristics
         -   add x to the star - random number relative to the canvas width
         -   add y to the star - random number relative to the canvas height
@@ -54,12 +130,14 @@ import './general.js';
         -   add radius to the star - random size
         -   return the star
         -   bind the class to the method in the constructor
-    - Write the method createStars
-        -   repeatedly call the method createStar and add the new star to the
-            array of stars in the config object.  The number of stars is in the
-            length property of the config object.
-        -   bind the class to the method in the constructor
-        -   call the method in the constructor
+        */
+    }
+    drawStar(st)
+    
+}
+/* Create a class called MidnightSky
+
+    
     -   Write the method drawStar.  Pass in a star as a parameter
         -   it should draw one star
         -   bind the class to the method
