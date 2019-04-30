@@ -1,8 +1,8 @@
 {
-  "name": "memecreator",
+  "name": "midnightSky",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "midnightsky.js",
   "scripts": {
     "watch": "webpack-dev-server",
     "webpack": "webpack",

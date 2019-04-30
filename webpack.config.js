@@ -3,7 +3,7 @@ module.exports = {
     context: __dirname,
     entry: {
         general: './src/js/general.js',
-        memes: './src/js/memes.js',
+        midnightsky: './src/js/midnightsky.js',
     },
     output: {
         path: __dirname + "/dist",
