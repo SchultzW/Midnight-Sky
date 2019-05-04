@@ -64,7 +64,7 @@ class MidnightSky
             width: window.innerWidth,
             height: window.innerHeight,
             //velocity: 0.1,
-            length: 100,
+            length: 150,
             distance: 120,
             radius: 150,
             stars: []
@@ -91,7 +91,7 @@ class MidnightSky
         this.createStars();
         this.drawStars();
         
-        this.$canvas.addEventListener('mousemove',this.highlight(this.$canvas));
+        this.$canvas.addEventListener('mousemove',this.highlight(this.$context));
         //document.getElementById('imgCanvas').onmousemove=this.highlight();
         setInterval(this.animateStars,16);
 
@@ -143,7 +143,47 @@ class MidnightSky
         myStar.y=Math.floor(Math.random() * this.$canvas.height);
         myStar.velocityX=Math.random()*.2+.1;
         myStar.velocityY=Math.random()*.2+.1;
-        myStar.radius=Math.floor(Math.random() * 200) + 100;
+        //myStar.width=Math.floor(Math.random()*3+2);
+        let color=Math.floor(Math.random()*10);
+        switch(color)
+        {
+            case 1:
+            color= "blueViolet";
+            break;
+            case 2:
+            color="indigo";
+            break;
+            case 3:
+            color="mediumslateblue";
+            break;
+            case 4:
+            color="white";
+            break;
+            case 5:
+            color="plum";
+            break;
+            case 5:
+            color="coral";
+            break;
+            case 6:
+            color="teal"
+            break;
+            case 7:
+            color="crimson";
+            break;
+            case 8:
+            color="Aquamarine";
+            break;
+            case 9:
+            color="Fuchsia"
+            break;
+            case 10:
+            color="SpringGreen"
+            break;
+            
+        }
+        myStar.color=color;
+       // myStar.radius=Math.floor(Math.random() * 200) + 100;
         return myStar;
         /*
         - Write the method createStar
@@ -179,7 +219,7 @@ class MidnightSky
     drawStar(star)
     {
         
-        this.$context.fillStyle='white';
+        this.$context.fillStyle=star.color;
         this.$context.fillRect(star.x,star.y,star.width,star.width);
         /*
          Write the method drawStar.  Pass in a star as a parameter
